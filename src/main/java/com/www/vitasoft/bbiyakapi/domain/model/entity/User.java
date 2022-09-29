@@ -1,5 +1,7 @@
 package com.www.vitasoft.bbiyakapi.domain.model.entity;
 
+import com.www.vitasoft.bbiyakapi.domain.model.dto.GetUserDto;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,17 +18,23 @@ import lombok.NoArgsConstructor;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    public long id;
 
-    String username;
+    public String username;
 
-    String password;
+    public String password;
 
-    String email;
+    public String email;
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public User(GetUserDto getUserDto){
+        this.username = getUserDto.getUsername();
+        this.password = getUserDto.getPassword();
+        this.email = getUserDto.getEmail();
     }
 }
